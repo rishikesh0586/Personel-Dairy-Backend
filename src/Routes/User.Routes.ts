@@ -1,8 +1,12 @@
 import express from 'express';
-import { createUser } from '../Controllers/User.controller.js';
+import { register,readAllUser,updateUser,deleteUser } from '../Controllers/User.Controller.js';
 const router = express.Router();
 
-router.get('/signup', createUser);
+router.post('/signup', register);
+router.get('/getuser', readAllUser);
+router.put('/updateuser/:id', updateUser);
+router.delete('/deleteuser/:id', deleteUser);
+
 
  router.get('/', (req, res) => {
 res.status(200).json({
