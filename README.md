@@ -19,3 +19,6 @@ npm i express
 npm install --save -D @types/express
 npm i mongoose
 npm i --save -D @types/mongoose
+//for auth
+npm i --save-dev @types/jsonwebtoken
+npm i jsonwebtoken

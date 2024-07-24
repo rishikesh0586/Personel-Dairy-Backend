@@ -2,3 +2,6 @@ install dependencies
 config package.json
 
 make express server 
+
+req.params.id ke liye  http://localhost:9999/updateuser/669f429898db712407e8753e
+and routes for 

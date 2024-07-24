@@ -1,8 +1,11 @@
 import express from 'express';
 import { register,readAllUser,updateUser,deleteUser } from '../Controllers/User.Controller.js';
+import { login } from '../Controllers/Auth.js';
+
 const router = express.Router();
 
 router.post('/signup', register);
+router.post('/login', login);
 router.get('/getuser', readAllUser);
 router.put('/updateuser/:id', updateUser);
 router.delete('/deleteuser/:id', deleteUser);
