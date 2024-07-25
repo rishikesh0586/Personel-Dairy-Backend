@@ -17,8 +17,13 @@ npm install --save-dev nodemon
 npm install -D typescript
 npm i express
 npm install --save -D @types/express
+//for database
 npm i mongoose
 npm i --save -D @types/mongoose
 //for auth
 npm i --save-dev @types/jsonwebtoken
 npm i jsonwebtoken
+
+//for verify account and send otp on email
+npm i --save-dev @types/nodemailer
+npm i nodemailer

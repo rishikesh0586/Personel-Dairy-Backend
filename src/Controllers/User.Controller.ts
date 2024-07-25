@@ -1,23 +1,36 @@
+import { CreateOtp } from "../Auth/VerifyAccount/CreateOtp.js";
+import {  sendEmailOTP } from "../Auth/VerifyAccount/SendMail.js";
 import userModel from "../model/User.Model.js";
 import { Request,Response } from "express";
 
 /* it has 4 controller register updateUser deleteUser readAllUser */
 export const register = async(req:Request,res:Response)=>{
 const {name,email,password} = req.body;
+console.log("i mam register")
 
 //check server side validation  if name email and password are not null
 //if user email exists
 
 const user=await userModel.find({email});
+console.log(user);
 if(!user){
     return res.status(409).json({message:"email already exists",});
     //throw new Error("error hai")
 }
+//const user = { name, email, password };
+  
+// Generate activation token (remains in this file)
+const activationToken = CreateOtp(user);
 
-await userModel.create({name,email,password});
+// Prepare email data
+const data = { user: { name }, activationCode: activationToken.token };
+console.log(data);
+// Send activation email (using separate function)
+await sendEmailOTP(email, data ,res);
+//await userModel.create({name,email,password});
 
 
-    res.json({message:"user created"});
+    //res.json({message:"user created"});
 }
 
 export const  readAllUser = async (req:Request, res:Response) => {
